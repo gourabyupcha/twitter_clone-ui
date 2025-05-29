@@ -1,0 +1,128 @@
+.tweet-card {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.tweet-card:hover {
+  background-color: var(--hover-color);
+}
+
+.tweet-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.tweet-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.tweet-user-info {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tweet-username {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+
+.tweet-handle, .tweet-timestamp {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.tweet-text {
+  margin: 0;
+  word-wrap: break-word;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.tweet-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.tweet-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tweet-action:hover {
+  background-color: var(--hover-action);
+}
+
+.tweet-action span {
+  font-size: 13px;
+}
+
+.tweet-action.like-button:hover {
+  color: var(--like-color);
+  background-color: var(--like-bg);
+}
+
+.tweet-action.retweet-button:hover {
+  color: var(--retweet-color);
+  background-color: var(--retweet-bg);
+}
+
+.tweet-action.reply-button:hover {
+  color: var(--primary-color);
+  background-color: var(--primary-bg);
+}
+
+.tweet-action.like-button.active {
+  color: var(--like-color);
+}
+
+.tweet-action.retweet-button.active {
+  color: var(--retweet-color);
+}
+
+@media (max-width: 640px) {
+  .tweet-card {
+    padding: 12px;
+  }
+
+  .tweet-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .tweet-text {
+    font-size: 15px;
+  }
+}
