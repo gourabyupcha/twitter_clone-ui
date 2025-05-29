@@ -1,15 +1,17 @@
-import { createSignal, createEffect, createMemo, Show } from 'solid-js'
+import { createSignal, createEffect, createMemo, Show, Switch, Match } from 'solid-js'
 import { dummyTweets } from './data/tweets'
 import Header from './components/Header/Header'
 import SearchBar from './components/SearchBar/SearchBar'
 import TweetList from './components/TweetList/TweetList'
 import EmptyState from './components/EmptyState/EmptyState'
 import './App.css'
+import { TweetCardSkeleton } from './components/Loaders/TweetSkeleton'
 
 function App() {
   const [searchTerm, setSearchTerm] = createSignal('');
   const [isDarkMode, setIsDarkMode] = createSignal(true);
   const [allTweets, setAllTweets] = createSignal([]);
+  const [loading, setLoading] = createSignal(true);
   
   const filteredTweets = createMemo(() => {
     const term = searchTerm().toLowerCase().trim();
@@ -39,6 +41,8 @@ function App() {
       }
     } catch (error) {
       console.error('Error fetching tweets:', error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -63,12 +67,19 @@ function App() {
       <Header />
       <main>
         <SearchBar searchTerm={searchTerm()} setSearchTerm={setSearchTerm} />
-        <Show 
-          when={filteredTweets().length > 0}
-          fallback={<EmptyState searchTerm={searchTerm()} />}
-        >
-          <TweetList tweets={filteredTweets()} />
-        </Show>
+
+        <Switch>
+          <Match when={loading()}>
+            <TweetCardSkeleton />
+          </Match>
+
+          <Match when={!loading() && allTweets().length === 0}>
+            <EmptyState searchTerm={searchTerm()} />
+          </Match>
+          <Match when={!loading() && allTweets().length > 0}>
+            <TweetList tweets={filteredTweets()} />
+          </Match>
+        </Switch>
       </main>
     </div>
   )

@@ -1,0 +1,109 @@
+/* tweet-skeleton.css */
+
+/* .tweet-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid #e1e8ed;
+  background-color: #fff;
+} */
+
+/* .tweet-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: bold;
+  background-color: #ccc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+} */
+
+/* Skeleton Specific Styles */
+.skeleton {
+  pointer-events: none;
+}
+
+.skeleton-avatar,
+.skeleton-line,
+.skeleton-icon {
+--skeleton-size: 18px;
+
+  width: var(--skeleton-size);
+  height: var(--skeleton-size);
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.5) 25%,
+    rgba(225, 225, 225, 0.8) 50%,
+    rgba(240, 240, 240, 0.5) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 5s linear infinite;
+}
+
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.skeleton-line {
+  height: 12px;
+  margin: 0.3rem 0;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.skeleton-line.short {
+    width: 100px;
+}
+
+.skeleton-line.xshort {
+  width: 40%;
+}
+
+.skeleton-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+/* Layout */
+/* .tweet-content {
+  border: 1px solid #e1e8ed;
+} */
+
+
+/* .tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.skeleton-tweet-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* .tweet-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+} */
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
